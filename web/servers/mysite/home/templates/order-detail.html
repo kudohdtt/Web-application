@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Booking room | Order detail</title>
+
+<!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Raleway:300,500,800|Old+Standard+TT' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:300,500,800' rel='stylesheet' type='text/css'>
+
+<!-- font awesome -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="/static/templates/rooms/assets/bootstrap/css/bootstrap.min.css" />
+
+<!-- uniform -->
+<link type="text/css" rel="stylesheet" href="/static/templates/rooms/assets/uniform/css/uniform.default.min.css" />
+
+<!-- animate.css -->
+<link rel="stylesheet" href="/static/templates/rooms/assets/wow/animate.css" />
+
+
+<!-- gallery -->
+<link rel="stylesheet" href="/static/templates/rooms/assets/gallery/blueimp-gallery.min.css">
+
+
+<!-- favicon -->
+<link rel="shortcut icon" href="/static/templates/rooms/images/logo.png" type="image/x-icon">
+<link rel="icon" href="/static/templates/rooms/images/logo.png" type="image/x-icon">
+<link rel="stylesheet" href="/static/templates/rooms/assets/style.css">
+
+<!-- popup -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body id="home">
+
+
+<!-- top 
+  <form class="navbar-form navbar-left newsletter" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Enter Your Email Id Here">
+        </div>
+        <button type="submit" class="btn btn-inverse">Subscribe</button>
+    </form>
+ top -->
+
+<!-- header -->
+<nav class="navbar  navbar-default" role="navigation" style="position: fixed;top: 0;left: -3px;width: 100.9%;z-index: 1000;box-shadow: 0px 0px 2px 2px #AAA ;border-radius: none;">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/bookingroom"><img src="/static/templates/home/img/logo.png"  alt="holiday crown" style="width: 50px;">
+      <span style="font-weight: 550;">Booking room</span></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+      
+     <ul class="nav navbar-nav">        
+        <li><a href="/bookingroom">Home </a></li>
+        {% if user.username %}
+          <li class="nav-item">         
+          <a class="nav-link" href="/bookingroom/order/?uid={{user.id}}" >Order</a>      
+          </li>
+        {% endif %}
+        <li><a href="/bookingroom/#tm-section-2">Top Destination</a></li>
+        <li><a href="/bookingroom/#tm-section-3">Recommended Places</a></li>
+        <li><a href="/bookingroom/#tm-section-4">Contact</a></li>
+        {% if user.username %}      
+        <li><a href="/bookingroom/logout">Hello {{user.username}}(Logout)</a></li>
+        {% else %}
+        <li><a href="/bookingroom/login">Login</a></li>
+        {% endif %}
+        
+      </ul>
+    </div><!-- Wnavbar-collapse -->
+  </div><!-- container-fluid -->
+</nav>
+<!-- header -->
+
+<div class="container" style="margin-top:80px;margin-bottom: 20px;">
+
+       <h1 class="title" style="padding-left: : 0px;">Order detail</h1>
+       <div>
+         <ul class="list-group">
+          <li class="list-group-item">Name : {{hotel.name}} </li>
+          <li class="list-group-item">Address : {{hotel.address}}  </li>
+          <li class="list-group-item">Room type : {{roomtype.name}} </li>
+          <li class="list-group-item">Price : {{roomtype.price}} </li>
+          <li class="list-group-item">{{roomtype.bed}} </li>
+          <li class="list-group-item">Acreage : {{roomtype.acreage}} </li>
+          <li class="list-group-item">Room number : {{room.number}} </li>
+          <li class="list-group-item">Checkin date : {{order.checkin_date}} </li>
+          <li class="list-group-item">Checkout date : {{order.checkout_date}} </li>
+          <li class="list-group-item">Checkin key : {{order.checkin_key}}</li>
+          <li class="list-group-item">Status : Waitting for checkin </li>
+        </ul>
+        
+          <button id='del' class="btn btn-default" data-toggle="modal" data-target="#myModal" style="float: right;">Cancel booking</button>
+        
+        
+       </div>
+       
+</div>
+
+
+
+<footer class="spacer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h4>Holiday Crown</h4>
+                    <p>Holiday Crown was these three and songs arose whose. Of in vicinity contempt together in possible branched. Assured company hastily looking garrets in oh. Most have love my gone to this so. Discovered interested prosperous the our affronting insipidity day. Missed lovers way one vanity wishes nay but. Use shy seemed within twenty wished old few regret passed. Absolute one hastened mrs any sensible. </p>
+                </div>              
+                 
+                 <div class="col-sm-3">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="rooms-tariff.php">Rooms & Tariff</a></li>        
+                        <li><a href="introduction.php">Introduction</a></li>
+                        <li><a href="gallery.php">Gallery</a></li>
+                        <li><a href="tour.php">Tour Packages</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                    </ul>
+                </div>
+                 <div class="col-sm-4 subscribe">
+                    <h4>Subscription</h4>
+                    <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Enter email id here">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Get Notify</button>
+                    </span>
+                    </div>
+                    <div class="social">
+                    <a href="#"><i class="fa fa-facebook-square" data-toggle="tooltip" data-placement="top" data-original-title="facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"  data-toggle="tooltip" data-placement="top" data-original-title="instragram"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square" data-toggle="tooltip" data-placement="top" data-original-title="twitter"></i></a>
+                    <a href="#"><i class="fa fa-pinterest-square" data-toggle="tooltip" data-placement="top" data-original-title="pinterest"></i></a>
+                    <a href="#"><i class="fa fa-tumblr-square" data-toggle="tooltip" data-placement="top" data-original-title="tumblr"></i></a>
+                    <a href="#"><i class="fa fa-youtube-square" data-toggle="tooltip" data-placement="top" data-original-title="youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--/.row--> 
+        </div>
+        <!--/.container-->    
+    
+    <!--/.footer-bottom--> 
+</footer>
+
+
+
+<a href="#home" class="toTop scroll"><i class="fa fa-angle-up"></i></a>
+
+
+
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title">title</h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->    
+</div>
+
+
+<!-- popup -->
+
+
+<div class="modal fade" id="myModal" role="dialog" >
+        <div style="position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    opacity: 80%;
+    background-color: black; 
+    "></div>
+    <div class="modal-dialog" style="z-index: 1060">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;">Confirm your actions</h4>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p>Please check your email and enter your confirmation code</p>
+          <input id="code" type="text" name="code" placeholder="Example : CAL2001">
+          <span id='result'></span>
+          <div style="display: block;text-align: center;margin-top: 5px;">
+            <button id="cf" type="button" class="btn btn-default" >Submit</button>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <a href="/bookingroom/order/?uid={{user.id}}"><button  type="button" class="btn btn-default" >Close</button></a>
+          
+          <!-- <button type="submit" class="btn btn-default" data-dismiss="modal">Submit</button> -->
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+<!-- Ajax -->
+<script type="text/javascript" src="/static/ajax/xmlhttp.js"></script>
+
+<script type="text/javascript">
+   
+    var key = '';
+
+    //send email
+    document.getElementById('del').onclick = function() {
+
+      var xmlhttp = getXmlHttpObject();
+
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {    
+          if (this.status == 200) {
+            var obj = JSON.parse(this.responseText);
+             var result = obj.code;
+             if (result){
+                key = result;
+             }
+              
+              
+            }
+          }
+ 
+      };
+
+      xmlhttp.open("POST", "http://127.0.0.1:8000/bookingroom/sendEmailConfirm/", true);
+      xmlhttp.setRequestHeader("Content-type",
+"application/x-www-form-urlencoded");
+      // var data = document.getElementById("key-search").innerHTML;
+      // var data = {
+      //   'address': address
+      // };
+      // var s = JSON.stringify(data)
+      // xmlhttp.send("address={{address}}&page=1");
+      xmlhttp.send("username={{user.username}}&email={{user.email}}");
+
+    }
+
+
+    //confirm
+     document.getElementById('cf').onclick = function() {
+
+        if(document.getElementById('code').value == key){
+            document.getElementById('result').innerHTML = 'Delete order successful';
+
+            //insert to order
+            document.getElementById('cf').style.display = "none";
+            var xmlhttp = getXmlHttpObject();
+
+
+            xmlhttp.open("POST", "http://127.0.0.1:8000/bookingroom/order/d/", true);
+            xmlhttp.setRequestHeader("Content-type",
+      "application/x-www-form-urlencoded");
+            // var data = document.getElementById("key-search").innerHTML;
+            // var data = {
+            //   'address': address
+            // };
+            // var s = JSON.stringify(data)
+            // xmlhttp.send("address={{address}}&page=1");
+            xmlhttp.send("order_id={{order.id}}");
+            // xmlhttp.send("hotel_id={{roomtype.hotel_id}}&room_id=1&user_id={{user.id}}");
+
+
+        } else{
+            document.getElementById('result').innerHTML = 'Unsuccessful';
+        }
+
+  
+     }
+  
+  </script>
+
+
+
+
+<script src="/static/templates/rooms/assets/jquery.js"></script>
+
+<!-- wow script -->
+<script src="/static/templates/rooms/assets/wow/wow.min.js"></script>
+
+<!-- uniform -->
+<script src="/static/templates/rooms/assets/uniform/js/jquery.uniform.js"></script>
+
+
+<!-- boostrap -->
+<script src="/static/templates/rooms/assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+
+<!-- jquery mobile -->
+<script src="/static/templates/rooms/assets/mobile/touchSwipe.min.js"></script>
+
+<!-- jquery mobile -->
+<script src="/static/templates/rooms/assets/respond/respond.js"></script>
+
+<!-- gallery -->
+<script src="/static/templates/rooms/assets/gallery/jquery.blueimp-gallery.min.js"></script>
+
+
+<!-- custom script -->
+<script src="/static/templates/rooms/assets/script.js"></script>
+
+<!-- ajax -->
+
+
+</body>
+</html>
+    

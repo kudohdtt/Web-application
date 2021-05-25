@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Login</title>
+<!-- 
+
+Letter Template 
+
+https://templatemo.com/tm-510-letter
+
+
+
+Template Re-distribution is NOT allowed.
+
+-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" href="/static/templates/login/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/templates/login/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/static/templates/login/css/demo.css" />
+  <link rel="stylesheet" href="/static/templates/login/css/templatemo-style.css">
+  
+  <script type="text/javascript" src="/static/templates/login/js/modernizr.custom.86080.js"></script>
+		
+	</head>
+
+	<body>
+
+
+			<div id="particles-js"></div>
+		
+			<ul class="cb-slideshow">
+	            <li></li>
+	            <li></li>
+	            <li></li>
+	            <li></li>
+	            <li></li>
+	            <li></li>
+	        </ul>
+
+			        <!-- menu bar -->
+
+	         		
+          		<nav class="navbar navbar-expand-lg navbar-dark" >
+
+          			
+	          			<a class="navbar-brand mr-auto" href="#" style="margin-left: 10px">
+	                    	<img src="/static/templates/home/img/logo.png" alt="Site logo">Bookingroom
+	                	</a>
+	                	
+	                <button class="navbar-toggler tm-navbar " data-toggle="collapse" data-target="#collapse-target" style="cursor: pointer;">
+	                	<span class="navbar-toggler-icon"></span>
+	                </button>
+          
+	                	<div class= "tm-content collapse navbar-collapse" id="collapse-target" > 
+
+	               		<ul class="navbar-nav ml-auto" >
+		            		<li class="nav-item">
+	            				<a class="nav-link" href="/bookingroom/">Home</a>
+            				</li>
+            				<li class="nav-item">
+            					<a class="nav-link active" href="#">Login</a>
+            				</li>
+            				<li class="nav-item">
+            					<a class="nav-link " href="/bookingroom/register">Register</a>
+            				</li>
+            				
+            			</ul>
+               		</div>
+          		</nav>   
+
+			<div class="container-fluid">
+
+				<div class="row cb-slideshow-text-container ">
+					<div class= "tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section">
+					<header class="mb-5"><h1>Login</h1></header>
+				<!-- form login -->
+                    <form method="POST" class="subscribe-form">
+                    	{% csrf_token %}
+                    	{% for key, value in form.errors.items %}
+				            {{value}}
+				        {% endfor %}
+               	    	<div class="row form-section">
+
+							<div class="col-md-7 col-sm-7 col-xs-7">
+			                      <input name="username" type="text" class="form-control" id="username" placeholder="Username..." required/>
+			                      <br>
+			                      <input name="password" type="password" class="form-control" id="password" placeholder="Your Password..." required/>
+			                      <br>
+			                      <input type="hidden" name="next" value="/bookingroom"/>
+			                      <button type="submit" class="tm-btn-subscribe">Login</button>
+			                      
+				  			</div>							
+						</div>
+                    </form>
+                    <!-- form login -->
+					<div class="tm-social-icons-container text-xs-center">
+	                    <a href="https://www.facebook.com/" class="tm-social-link"><i class="fa fa-facebook"></i></a>
+	                    <a href="https://www.plus.google.com/" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
+	                    <a href="https://www.twitter.com/	" class="tm-social-link"><i class="fa fa-twitter"></i></a>
+	                    <a href="https://www.instagram.com/" class="tm-social-link"><i class="fa fa-instagram"></i></a>
+	                </div>
+
+					</div>
+				</div>	
+				<div class="footer-link">
+					
+				</div>
+			</div>	
+	<!-- load JS files -->
+    <script src="/static/templates/home/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+    <script src="/static/templates/home/js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
+    <script src="/static/templates/home/js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
+    <script src="/static/templates/home/js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
+    <script src="/static/templates/home/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+    <script src="/static/templates/home/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
+    <script src="/static/templates/home/js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
+
+	</body>
+
+	<script type="text/javascript" src="/static/templates/login/js/particles.js"></script>
+	<script type="text/javascript" src="/static/templates/login/js/app.js"></script>
+	<script src="/static/templates/home/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+    
+</html>
